@@ -70,7 +70,7 @@
                                         {{ $item->is_type ==true ? 'Hiển Thị' : 'Ẩn'}}</td>
 
                                     <td>
-                                        <a href="{{route('admins.sanpham.create',$item->id)}}"><i
+                                        <a href="{{route('admins.sanpham.edit',$item->id)}}"><i
                                                 class="mdi mdi-pencil text-muted fs-18 rounded-2 border p-1 me-1"></i></a>
                                         <form action="{{route('admins.sanpham.destroy',$item->id)}}" method="post"
                                             class="d-inline">
