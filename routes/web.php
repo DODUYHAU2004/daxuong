@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\danhMucController;
 use App\Http\Controllers\Admin\sanPhamController;
+use App\Http\Controllers\cartController;
+use App\Http\Controllers\productController;
 use App\Http\Middleware\checkRoleAdminMiddleware;
 
 /*
@@ -82,7 +84,15 @@ Route::prefix('sanpham')
 
     Route::delete('{id}/destroy',[sanPhamController::class,'destroy'])->name('destroy');
 });
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
+Route::get('/product/detail/{id}',[productController::class,'detailSanPham'])->name('products.detail');
+Route::get('/list-cart',[cartController::class,'listCart'])->name('cart.list');
+Route::post('/add-to-cart',[cartController::class,'addCart'])->name('cart.add');
+Route::post('/update-cart',[cartController::class,'updateCart'])->name('cart.update');
+
+// web.php (Route file)
+Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
+
