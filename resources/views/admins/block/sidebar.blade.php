@@ -60,6 +60,11 @@
                         <span>  Sản Phẩm</span>
 
                     </a>
+                    <a  class="tp-link" href="{{route('admins.donhangs.index') }}" >
+                        <i data-feather="align-center"></i>
+                        <span>  Đơn Hàng</span>
+
+                    </a>
                 </li>
 
 

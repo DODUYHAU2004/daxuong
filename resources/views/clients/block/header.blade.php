@@ -45,7 +45,7 @@
                         <!-- start logo area -->
                         <div class="col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="{{route('donhangs.index')}}">
                                     <img src="{{asset('assets/client/img/logo/logo.png')}}" alt="Brand Logo">
                                 </a>
                             </div>
@@ -185,6 +185,7 @@
                                                 <li><a href="login-register.html">login</a></li>
                                                 <li><a href="login-register.html">register</a></li>
                                                 <li><a href="my-account.html">my account</a></li>
+                                                <li><a href="{{route('donhangs.index')}}">My Order</a></li>
                                             </ul>
                                         </li>
                                         <li>
@@ -221,7 +222,7 @@
                     <div class="col-12">
                         <div class="mobile-main-header">
                             <div class="mobile-logo">
-                                <a href="index.html">
+                                <a href="">
                                     <img src="{{asset('assets/client/img/logo/logo.png')}}" alt="Brand Logo">
                                 </a>
                             </div>

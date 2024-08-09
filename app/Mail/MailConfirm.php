@@ -2,12 +2,14 @@
 
 namespace App\Mail;
 
+use App\Models\DonHang;
+use App\Models\SanPham;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class MailConfirm extends Mailable
 {
@@ -16,14 +18,14 @@ class MailConfirm extends Mailable
     /**
      * Create a new message instance.
      */
-    public $sanPham;
-    public function __construct(SanPham $sanPham)
+    public $donhang;
+    public function __construct(DonHang $donhang)
     {
-        $this->sanPham=$sanPham;
+        $this->donhang=$donhang;
     }
 public function buid(){
-    return $thí->subject('xác nhận sản phẩm')
-    ->markdown('admins.mail.mailconfirm')->with('sanPham',$this->sanPham);
+    return $this->subject('xác nhận Đơn Hàng')
+    ->markdown('clients.donhangs.mail')->with('donhang',$this->donhang);
 }
     /**
      * Get the message envelope.

@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\danhMucController;
-use App\Http\Controllers\Admin\sanPhamController;
 use App\Http\Controllers\cartController;
+use App\Http\Controllers\odercontroller;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\Admin\danhMucController;
+use App\Http\Controllers\Admin\DonHangController;
+use App\Http\Controllers\Admin\sanPhamController;
 use App\Http\Middleware\checkRoleAdminMiddleware;
 
 /*
@@ -85,7 +87,19 @@ Route::prefix('sanpham')
     Route::delete('{id}/destroy',[sanPhamController::class,'destroy'])->name('destroy');
 });
 //Auth::routes();
+Route::prefix('donhangs')
+    ->as('donhangs.')
+->group(function (){
+    Route::get('/',[DonHangController::class,'index'] )->name('index');
 
+
+    Route::get('/show/{id}',[DonHangController::class,'show'])->name('show');
+
+    Route::get('{id}/edit',[DonHangController::class,'edit'])->name('edit');
+    Route::put('{id}/update',[DonHangController::class,'update'])->name('update');
+
+    Route::delete('{id}/destroy',[DonHangController::class,'destroy'])->name('destroy');
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 Route::get('/product/detail/{id}',[productController::class,'detailSanPham'])->name('products.detail');
@@ -95,4 +109,17 @@ Route::post('/update-cart',[cartController::class,'updateCart'])->name('cart.upd
 
 // web.php (Route file)
 Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
+Route::middleware('auth')->prefix('donhangs')
+->as('donhangs.')
+->group(function (){
+Route::get('/',[odercontroller::class,'index'] )->name('index');
+Route::get('/create',[odercontroller::class,'create'] )->name('create');
+Route::post('/store',[odercontroller::class,'store'] )->name('store');
+
+Route::get('/show/{id}',[odercontroller::class,'show'])->name('show');
+Route::put('{id}/update',[odercontroller::class,'update'])->name('update');
+
+Route::delete('{id}/destroy',[odercontroller::class,'destroy'])->name('destroy');
+
+});
 
